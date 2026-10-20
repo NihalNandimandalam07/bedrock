@@ -97,3 +97,9 @@ resource "aws_lambda_function" "opa_lambda" {
   ]
 }
 
+/*
+aws lambda invoke --function-name opa-policy-generator --cli-binary-format raw-in-base64-out --payload '{"requirement":"Generate an OPA policy that denies S3 buckets with public access."}' response2.json
+
+python3 -c 'import json; r=json.load(open("response2.json")); assert r["statusCode"] == 200, r; print(json.loads(r["body"])["policy"])' > generated_policy2.rego
+*/
+
